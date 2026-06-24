@@ -1,6 +1,6 @@
 # Uas-Pemrograman-Web2
 
-# 📦 E-Inventory — Sistem Manajemen Inventaris Barang
+# E-Inventory — Sistem Manajemen Inventaris Barang
 
 Proyek Ujian Akhir Semester (UAS) Mata Kuliah **Pemrograman Web 2**.
 Aplikasi sistem manajemen inventaris barang yang dibangun dengan **Decoupled Architecture** — backend dan frontend terpisah penuh dan berkomunikasi melalui REST API.
@@ -11,7 +11,7 @@ Teknik Informatika, Universitas Pelita Bangsa
 
 ---
 
-## 📋 Deskripsi Proyek
+## Deskripsi Proyek
 
 E-Inventory adalah sistem informasi untuk mengelola data **barang**, **kategori barang**, dan **supplier**. Sistem ini memiliki dua jenis hak akses:
 
@@ -20,7 +20,7 @@ E-Inventory adalah sistem informasi untuk mengelola data **barang**, **kategori 
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 | Komponen | Teknologi |
 |---|---|
@@ -33,7 +33,7 @@ E-Inventory adalah sistem informasi untuk mengelola data **barang**, **kategori 
 
 ---
 
-## 📁 Struktur Folder Repository
+## Struktur Folder Repository
 
 ```
 UAS_Web2_312410195_Ridho/
@@ -43,19 +43,19 @@ UAS_Web2_312410195_Ridho/
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-- ✅ Autentikasi Login dengan JWT Bearer Token
-- ✅ CRUD lengkap (Create, Read, Update, Delete) untuk Barang, Kategori, dan Supplier
-- ✅ Proteksi endpoint API menggunakan CodeIgniter Filters (menolak akses tanpa token / Error 401)
-- ✅ CORS Filter untuk komunikasi lintas origin antara frontend dan backend
-- ✅ Vue Router dengan Navigation Guard (`beforeEach`) untuk membatasi akses halaman admin
-- ✅ Axios Request & Response Interceptor (token otomatis terpasang di setiap request, otomatis logout saat sesi habis)
-- ✅ Tampilan UI modern dan responsif menggunakan TailwindCSS
+-  Autentikasi Login dengan JWT Bearer Token
+-  CRUD lengkap (Create, Read, Update, Delete) untuk Barang, Kategori, dan Supplier
+-  Proteksi endpoint API menggunakan CodeIgniter Filters (menolak akses tanpa token / Error 401)
+-  CORS Filter untuk komunikasi lintas origin antara frontend dan backend
+-  Vue Router dengan Navigation Guard (`beforeEach`) untuk membatasi akses halaman admin
+-  Axios Request & Response Interceptor (token otomatis terpasang di setiap request, otomatis logout saat sesi habis)
+-  Tampilan UI modern dan responsif menggunakan TailwindCSS
 
 ---
 
-## 🔐 Hak Akses Pengguna
+##  Hak Akses Pengguna
 
 | Role | Akses |
 |---|---|
@@ -64,7 +64,7 @@ UAS_Web2_312410195_Ridho/
 
 ---
 
-## 📸 Screenshot
+## Screenshot
 
 ### 1. Skema Relasi Tabel Database
 ![Skema Database](screenshots/skema-database.png)
@@ -88,7 +88,7 @@ UAS_Web2_312410195_Ridho/
 
 ---
 
-## ⚙️ Cara Instalasi & Menjalankan Proyek di Komputer Lokal
+## Cara Instalasi & Menjalankan Proyek di Komputer Lokal
 
 ### Prasyarat
 - XAMPP (PHP 8.1+ dan MySQL/MariaDB aktif)
@@ -149,7 +149,7 @@ Password: admin123
 
 ---
 
-## 🧪 Cara Testing API dengan Postman
+## Cara Testing API dengan Postman
 
 ### Cek server aktif (tanpa token)
 ```
@@ -186,13 +186,13 @@ GET http://localhost:8080/api/supplier
 
 ---
 
-## 🔗 Demo & Presentasi
+## Demo & Presentasi
 
 - **Link Demo:** *(isi link demo di sini, jika tersedia)*
 - **Link Video Presentasi (YouTube):** *(isi link video presentasi di sini)*
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 
 Proyek ini dibuat untuk keperluan akademik (UAS Pemrograman Web 2) — Universitas Pelita Bangsa.
