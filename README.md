@@ -72,30 +72,68 @@ E-Library adalah sistem informasi rental buku dan komik digital yang dibangun me
 4. **rentals** - Transaksi rental (FK: book_id, member_id)
 5. **users** - Manajemen user/login
 
-## Screenshot Aplikasi
+## Hasil OutPut
 
-### Halaman Login
+### *Halaman Login*
+Ini halaman login khusus admin. Form sederhana berisi field Username dan Password, tombol Login berwarna pink/magenta dengan gradient, dan link "Kembali ke Beranda". Secara teknis, form ini akan mengirim request ke endpoint API CodeIgniter 4 (misal `/api/login`), lalu backend memverifikasi kredensial dan mengembalikan JWT token yang disimpan di sisi frontend (biasanya localStorage/sessionStorage) untuk dipakai di setiap request berikutnya.
+
 <img width="708" height="595" alt="image" src="https://github.com/user-attachments/assets/e8488a82-7ae0-4770-bd94-116ac232e4a8" />
 
-### Dashboard
-<img width="1600" height="316" alt="image" src="https://github.com/user-attachments/assets/e937e430-a423-48cc-af5b-e1a368ae49fe" />
+### *Dashboard*
+Halaman utama setelah login, menampilkan 3 kartu statistik: Total Buku (5), Kategori (5), Peminjaman Aktif (2). Ini ringkasan kondisi sistem secara keseluruhan.
+<img width="1600" height="316" alt="image" src="https://github.com/user-attachments/assets/9e13d661-2eea-440c-8513-878d1b14b66d" />
 
-### Manajemen Buku
-<img width="1600" height="401" alt="image" src="https://github.com/user-attachments/assets/9b692321-2aa1-480c-a1c6-4dd1cde83534" />
 
-### Form Tambah Buku
-<img width="1600" height="446" alt="image" src="https://github.com/user-attachments/assets/70ded4f1-9461-4a14-aa97-9287eb179789" />
+### *Data Buku / Manajemen Buku*
+Tabel buku dengan kolom Judul, Pengarang, Kategori, Stok, Status, Aksi. 5 buku terdaftar:
 
-### Manajemen Kategori
-<img width="1600" height="446" alt="image" src="https://github.com/user-attachments/assets/9844f57f-131b-41fe-a9ab-ccebfa54ae67" />
+ - Atomic Habits (James Clear, Non-Fiksi, stok 3, tersedia)
+ - One Piece Vol 1 (Eiichiro Oda, Komik, stok 0, habis)
+ - Kancil anak nakal (Ari Kurniawan, Komik, stok 10, tersedia)
+ - Ilmu Pengetahuan Alam (Apis Ridho Widodo, sains, stok 40, tersedia)
+ - Python (Kayla, sains, stok 75, tersedia)
+<img width="1600" height="401" alt="image" src="https://github.com/user-attachments/assets/8e09f6ed-9171-4cfa-b8bc-3f43b1dabe22" />
 
-### Manajemen Anggota
-<img width="1600" height="544" alt="image" src="https://github.com/user-attachments/assets/bf8e3fc8-f085-4b05-82fa-473eda2e1f0f" />
+### *Data Kategori / Manajemen Kategori*
+Tabel kategori dengan kolom ID, Nama Kategori, Aksi. 5 kategori: Fiksi (ID 1), Non-Fiksi (ID 2), Komik (ID 3), sains (ID 4), Pemrograman Web (ID 7). ID 5 dan 6 kosong — kemungkinan kategori tersebut pernah dibuat lalu dihapus, jadi ID-nya tidak dipakai ulang (perilaku normal auto-increment MySQL).
+<img width="1600" height="446" alt="image" src="https://github.com/user-attachments/assets/f6542291-4ed1-4f73-9f3c-116d36ffb857" />
 
-### Manajemen Rental
-<img width="1600" height="355" alt="image" src="https://github.com/user-attachments/assets/53e50d51-c149-46b8-ab5f-29525ecdc964" />
+### *Data Anggota / Manajemen Anggota*
+Tabel anggota dengan kolom Nama, Email, No HP, Aksi. 6 anggota terdaftar: Muhammad Ridho Hafiedz, Steven Wiliam, Ari, SyalshaPutri, Maulana Malik Ibrahim, dan michel idoyy. Tiap baris ada tombol Edit/Hapus.
+<img width="1600" height="544" alt="image" src="https://github.com/user-attachments/assets/0d4b0379-c44a-4cbf-8069-82bf71a80b04" />
+
+### *Data Peminjaman / Manajemen Rental*
+Tabel peminjaman dengan kolom Peminjam, Judul Buku, Tgl Pinjam, Tgl Kembali, Status, Aksi. 3 transaksi:
+ - Muhammad Ridho Hafiedz — Atomic Habits — dipinjam
+ - SyalshaPutri — Python — dipinjam
+ - Steven Wiliam — One Piece Vol 1 — dikembalikan
+
+Status "dipinjam" (badge kuning) dan "dikembalikan" (badge hijau) — cocok dengan dashboard yang menunjukkan 2 Peminjaman Aktif.
+<img width="1600" height="355" alt="image" src="https://github.com/user-attachments/assets/0a65dcda-5cdc-4228-a2ce-399db2dd2b66" />
 
 ## API Testing
 
-### API 401 Error (Tanpa Token)
+### *API 401 Error (Tanpa Token)*
+**Request:**
+- Method: `POST`
+- URL: `http://localhost:8080/api/categories`
+- Auth Type: Bearer Token, tapi kolom Token dibiarkan kosong (sengaja, untuk menguji
+- apakah API menolak request tanpa token)
+
+**Response yang didapat:**
+ - Status: 401 Unauthorize
+ - Waktu respons: 4.14 s, ukuran 293 B
+ - Body (JSON):
+```
+{
+    "message": "Token tidak ditemukan"
+}
+```
+Penjelasan teknisnya:
+
+Ini adalah bukti bahwa endpoint `/api/categories` di backend CodeIgniter 4 kamu sudah dilindungi oleh filter/middleware JWT auth. Ketika request POST dikirim tanpa menyertakan Bearer Token di header `Authorization`, backend:
+1. Mengecek header Authorization → tidak menemukan token
+2. Menolak request sebelum sampai ke controller/proses data
+3. Mengembalikan HTTP status code 401 Unauthorized dengan pesan error `"Token tidak ditemukan"`
+
 <img width="1093" height="876" alt="image" src="https://github.com/user-attachments/assets/5336331f-29a1-44da-893d-2484dcce3c17" />
