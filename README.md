@@ -4,7 +4,7 @@
 
 *Nim  : 312410195*
 
-*Kelas: I241B
+*Kelas: I241B*
 
 ## Deskripsi Proyek
 
