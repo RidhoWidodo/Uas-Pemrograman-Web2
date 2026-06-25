@@ -1,198 +1,108 @@
-# Uas-Pemrograman-Web2
-
-# E-Inventory — Sistem Manajemen Inventaris Barang
-
-Proyek Ujian Akhir Semester (UAS) Mata Kuliah **Pemrograman Web 2**.
-Aplikasi sistem manajemen inventaris barang yang dibangun dengan **Decoupled Architecture** — backend dan frontend terpisah penuh dan berkomunikasi melalui REST API.
-
-**Disusun oleh:**
-Muhammad Ridho Hafiedz — NIM 312410195 — Kelas I241B
-Teknik Informatika, Universitas Pelita Bangsa
-
----
+# E-Library - Sistem Informasi Rental Buku/Komik Digital
 
 ## Deskripsi Proyek
 
-E-Inventory adalah sistem informasi untuk mengelola data **barang**, **kategori barang**, dan **supplier**. Sistem ini memiliki dua jenis hak akses:
+E-Library adalah sistem informasi rental buku dan komik digital yang dibangun menggunakan arsitektur decoupled (terpisah) antara backend dan frontend. Aplikasi ini memungkinkan pengelolaan koleksi buku, kategori, anggota perpustakaan, dan transaksi rental secara terintegrasi.
 
-- **Pengunjung (Public)** — hanya dapat melihat halaman Beranda dengan informasi umum.
-- **Administrator (Wajib Login)** — dapat mengakses Dashboard, menambah, mengedit, menghapus data master, dan logout.
-
----
+**Tema:** Sistem Informasi Rental Buku / Komik Digital (E-Library)
 
 ## Teknologi yang Digunakan
 
-| Komponen | Teknologi |
-|---|---|
-| Backend | PHP Framework CodeIgniter 4 (REST API / Resource Controller) |
-| Frontend | Vue 3 (CDN) + Vue Router (Single Page Application) |
-| UI Framework | TailwindCSS (CDN) |
-| HTTP Client | Axios |
-| Database | MySQL / MariaDB |
-| Autentikasi | JWT (JSON Web Token) Bearer Token |
+### Backend
+- **Framework:** CodeIgniter 4 (RESTful API)
+- **Database:** MySQL/MariaDB
+- **Authentication:** JWT (JSON Web Token)
+- **Security:** CORS, XSS Protection, CSRF Protection
 
----
+### Frontend
+- **Framework:** VueJS 3 (SPA)
+- **Router:** Vue Router
+- **Styling:** TailwindCSS
+- **HTTP Client:** Axios
 
-## Struktur Folder Repository
+## Fitur Aplikasi
 
-```
-UAS_Web2_312410195_Ridho/
-├── backend-api/        → Source code CodeIgniter 4 (REST API)
-└── frontend-spa/        → Source code Vue 3 + TailwindCSS (SPA)
-```
+### 1. Manajemen Buku
+- CRUD data buku
+- Upload cover image
+- Pencarian dan filter berdasarkan kategori
+- Monitoring stok buku
 
----
+### 2. Manajemen Kategori
+- CRUD data kategori
+- Menampilkan jumlah buku per kategori
 
-## Fitur Utama
+### 3. Manajemen Anggota
+- CRUD data anggota
+- Generate kode anggota otomatis
+- Status anggota (Aktif/Tidak Aktif/Blacklist)
 
--  Autentikasi Login dengan JWT Bearer Token
--  CRUD lengkap (Create, Read, Update, Delete) untuk Barang, Kategori, dan Supplier
--  Proteksi endpoint API menggunakan CodeIgniter Filters (menolak akses tanpa token / Error 401)
--  CORS Filter untuk komunikasi lintas origin antara frontend dan backend
--  Vue Router dengan Navigation Guard (`beforeEach`) untuk membatasi akses halaman admin
--  Axios Request & Response Interceptor (token otomatis terpasang di setiap request, otomatis logout saat sesi habis)
--  Tampilan UI modern dan responsif menggunakan TailwindCSS
+### 4. Manajemen Rental
+- Proses peminjaman buku
+- Proses pengembalian buku
+- Perhitungan total harga otomatis
+- Monitoring status rental
 
----
+### 5. Dashboard
+- Statistik ringkasan
+- Aktivitas terbaru
 
-##  Hak Akses Pengguna
+### 6. Otentikasi
+- Login dengan JWT
+- Proteksi route dengan Navigation Guards
+- Axios Interceptor untuk token
 
-| Role | Akses |
-|---|---|
-| Pengunjung (Public) | Hanya halaman Beranda / informasi umum |
-| Administrator | Dashboard, tambah/edit/hapus data, logout |
+## Skema Database
 
----
+![Database Schema](docs/database/erd.png)
 
-## Screenshot
+### Relasi Tabel
+1. **categories** - Master kategori buku
+2. **books** - Master data buku (FK: category_id)
+3. **members** - Master data anggota
+4. **rentals** - Transaksi rental (FK: book_id, member_id)
+5. **users** - Manajemen user/login
 
-### 1. Skema Relasi Tabel Database
-![Skema Database](screenshots/skema-database.png)
+## Screenshot Aplikasi
 
-### 2. Uji Coba API Gagal — Error 401 (Postman)
-![Error 401](screenshots/error-401.png)
+### Halaman Login
+![Login Page](docs/screenshots/ui/01-login-page.png)
 
-### 3. Halaman Login
-![Halaman Login](screenshots/halaman-login.png)
+### Dashboard
+![Dashboard](docs/screenshots/ui/02-dashboard.png)
 
-### 4. Dashboard Admin
-![Dashboard](screenshots/dashboard.png)
+### Manajemen Buku
+![Books Table](docs/screenshots/ui/03-books-table.png)
 
-### 5. Form Modal Tambah/Edit Data
-![Form Modal](screenshots/form-modal.png)
+### Form Tambah Buku
+![Add Book Form](docs/screenshots/ui/07-form-add-book.png)
 
-### 6. Tabel Data dengan TailwindCSS
-![Tabel Data](screenshots/tabel-data.png)
+### Manajemen Kategori
+![Categories Table](docs/screenshots/ui/04-categories-table.png)
 
-> **Catatan:** Buat folder bernama `screenshots` di dalam repository, lalu upload semua gambar di atas ke folder tersebut dengan nama file yang sama seperti pada kode di atas.
+### Manajemen Anggota
+![Members Table](docs/screenshots/ui/05-members-table.png)
 
----
+### Manajemen Rental
+![Rentals Table](docs/screenshots/ui/06-rentals-table.png)
 
-## Cara Instalasi & Menjalankan Proyek di Komputer Lokal
+## API Testing
+
+### API 401 Error (Tanpa Token)
+![API 401 Error](docs/screenshots/api/401-error.png)
+
+### API 200 Success (Dengan Token)
+![API Success](docs/screenshots/api/200-success.png)
+
+## Instalasi & Setup
 
 ### Prasyarat
-- XAMPP (PHP 8.1+ dan MySQL/MariaDB aktif)
+- PHP 7.4+
 - Composer
-- Python (untuk menjalankan server frontend)
+- MySQL/MariaDB
+- Web Server (Apache/Nginx)
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/USERNAME-KAMU/UAS_Web2_312410195_Ridho.git
-cd UAS_Web2_312410195_Ridho
-```
-
-### 2. Setup Backend (CodeIgniter 4)
-
-Masuk ke folder backend:
-```bash
-cd backend-api
-composer install
-```
-
-Buat database baru bernama `db_einventory` di phpMyAdmin, lalu import file SQL yang disertakan di repository (jika ada).
-
-Buka file `.env`, sesuaikan konfigurasi berikut:
-```env
-database.default.hostname = localhost
-database.default.database = db_einventory
-database.default.username = root
-database.default.password =
-database.default.DBDriver = MySQLi
-database.default.port = 3306
-
-JWT_SECRET_KEY=ganti-dengan-secret-key-yang-aman-minimal-32-karakter
-```
-
-Jalankan server backend:
-```bash
-php spark serve
-```
-Backend akan berjalan di: **http://localhost:8080**
-
-> Biarkan terminal ini tetap terbuka selama aplikasi digunakan.
-
-### 3. Setup Frontend (Vue 3 SPA)
-
-Buka terminal baru (jangan tutup terminal backend), lalu masuk ke folder frontend:
-```bash
-cd frontend-spa
-python -m http.server 5500
-```
-Frontend akan berjalan di: **http://localhost:5500**
-
-### 4. Akun Login Default
-
-```
-Username: admin
-Password: admin123
-```
-
----
-
-## Cara Testing API dengan Postman
-
-### Cek server aktif (tanpa token)
-```
-GET http://localhost:8080/api/auth/test
-```
-
-### Cek proteksi token (harus dapat Error 401)
-```
-GET http://localhost:8080/api/barang
-```
-Tanpa Authorization → Response:
-```json
-{"status":401,"error":true,"message":"Token tidak ditemukan"}
-```
-
-### Login untuk mendapatkan token
-```
-POST http://localhost:8080/api/auth/login
-```
-Body (JSON):
-```json
-{
-    "username": "admin",
-    "password": "admin123"
-}
-```
-
-### Akses data dengan token (Bearer Token)
-```
-GET http://localhost:8080/api/barang
-GET http://localhost:8080/api/kategori
-GET http://localhost:8080/api/supplier
-```
-
----
-
-## Demo & Presentasi
-
-- **Link Demo:** *(isi link demo di sini, jika tersedia)*
-- **Link Video Presentasi (YouTube):** *(isi link video presentasi di sini)*
-
----
-
-## Lisensi
-
-Proyek ini dibuat untuk keperluan akademik (UAS Pemrograman Web 2) — Universitas Pelita Bangsa.
+git clone https://github.com/username/UAS_Web2_123456789_Nama.git
+cd UAS_Web2_123456789_Nama
