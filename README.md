@@ -6,7 +6,9 @@
 
 *Kelas: I241B*
 
-## Deskripsi Proyek
+*Matkul : Pemrograman Web2*
+
+## Proyek E-Library System
 
 E-Library adalah sistem informasi rental buku dan komik digital yang dibangun menggunakan arsitektur decoupled (terpisah) antara backend dan frontend. Aplikasi ini memungkinkan pengelolaan koleksi buku, kategori, anggota perpustakaan, dan transaksi rental secara terintegrasi.
 
@@ -60,7 +62,8 @@ E-Library adalah sistem informasi rental buku dan komik digital yang dibangun me
 
 ## Skema Database
 
-![Database Schema](docs/database/erd.png)
+<img width="241" height="175" alt="image" src="https://github.com/user-attachments/assets/84a0b534-5609-4d2a-b5da-72b8299037df" />
+
 
 ### Relasi Tabel
 1. **categories** - Master kategori buku
@@ -72,43 +75,27 @@ E-Library adalah sistem informasi rental buku dan komik digital yang dibangun me
 ## Screenshot Aplikasi
 
 ### Halaman Login
-![Login Page](docs/screenshots/ui/01-login-page.png)
+<img width="708" height="595" alt="image" src="https://github.com/user-attachments/assets/e8488a82-7ae0-4770-bd94-116ac232e4a8" />
 
 ### Dashboard
-![Dashboard](docs/screenshots/ui/02-dashboard.png)
+<img width="1600" height="316" alt="image" src="https://github.com/user-attachments/assets/e937e430-a423-48cc-af5b-e1a368ae49fe" />
 
 ### Manajemen Buku
-![Books Table](docs/screenshots/ui/03-books-table.png)
+<img width="1600" height="401" alt="image" src="https://github.com/user-attachments/assets/9b692321-2aa1-480c-a1c6-4dd1cde83534" />
 
 ### Form Tambah Buku
-![Add Book Form](docs/screenshots/ui/07-form-add-book.png)
+<img width="1600" height="446" alt="image" src="https://github.com/user-attachments/assets/70ded4f1-9461-4a14-aa97-9287eb179789" />
 
 ### Manajemen Kategori
-![Categories Table](docs/screenshots/ui/04-categories-table.png)
+<img width="1600" height="446" alt="image" src="https://github.com/user-attachments/assets/9844f57f-131b-41fe-a9ab-ccebfa54ae67" />
 
 ### Manajemen Anggota
-![Members Table](docs/screenshots/ui/05-members-table.png)
+<img width="1600" height="544" alt="image" src="https://github.com/user-attachments/assets/bf8e3fc8-f085-4b05-82fa-473eda2e1f0f" />
 
 ### Manajemen Rental
-![Rentals Table](docs/screenshots/ui/06-rentals-table.png)
+<img width="1600" height="355" alt="image" src="https://github.com/user-attachments/assets/53e50d51-c149-46b8-ab5f-29525ecdc964" />
 
 ## API Testing
 
 ### API 401 Error (Tanpa Token)
-![API 401 Error](docs/screenshots/api/401-error.png)
-
-### API 200 Success (Dengan Token)
-![API Success](docs/screenshots/api/200-success.png)
-
-## Instalasi & Setup
-
-### Prasyarat
-- PHP 7.4+
-- Composer
-- MySQL/MariaDB
-- Web Server (Apache/Nginx)
-
-### 1. Clone Repository
-```bash
-git clone https://github.com/username/UAS_Web2_123456789_Nama.git
-cd UAS_Web2_123456789_Nama
+<img width="1093" height="876" alt="image" src="https://github.com/user-attachments/assets/5336331f-29a1-44da-893d-2484dcce3c17" />
