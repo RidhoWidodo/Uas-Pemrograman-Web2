@@ -1,5 +1,11 @@
 # E-Library - Sistem Informasi Rental Buku/Komik Digital
 
+*Nama : Muhammad Ridho Hafiedz*
+
+*Nim  : 312410195*
+
+*Kelas: I241B
+
 ## Deskripsi Proyek
 
 E-Library adalah sistem informasi rental buku dan komik digital yang dibangun menggunakan arsitektur decoupled (terpisah) antara backend dan frontend. Aplikasi ini memungkinkan pengelolaan koleksi buku, kategori, anggota perpustakaan, dan transaksi rental secara terintegrasi.
